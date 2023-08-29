@@ -9,6 +9,7 @@ def add(a: float, b: float) -> float:
     a: first float
     b: second float
     
-    Return: the sum of a and b
+    Return: 
+    float: the sum of a and b
     """
     return a + b
