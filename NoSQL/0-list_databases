@@ -1,0 +1,2 @@
+// Task 0 - a script that lists all databases in MongoDB.
+show databases
