@@ -23,7 +23,7 @@ export default class HolbertonCourse {
         } else {
             throw new TypeError('Length must be a number');
         }
-        }
+    }
     get students() {
       return this._students;
     }
