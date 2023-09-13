@@ -10,9 +10,9 @@ export default class Pricing {
     return this._amount;
   }
 
-  set amount(newAmount) {
-    if (typeof newAmount === "number") {
-      this._amount = newAmount;
+  set amount(amount) {
+    if (typeof amount === "number") {
+      this._amount = amount;
     } else {
       throw new TypeError("Amount must be a number");
     }
@@ -22,9 +22,9 @@ export default class Pricing {
     return this._currency;
   }
 
-  set currency(newCurrency) {
-    if (newCurrency instanceof Currency) {
-      this._currency = newCurrency;
+  set currency(currency) {
+    if (currency instanceof Currency) {
+      this._currency = currency;
     } else {
       throw new TypeError("Currency must be a Currency");
     }
