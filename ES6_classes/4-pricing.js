@@ -1,4 +1,4 @@
-import Currency from "./3-currency";
+import Currency from "./3-currency.js";
 
 export default class Pricing {
   constructor(amount, currency) {
@@ -35,12 +35,6 @@ export default class Pricing {
   }
 
   static convertPrice(amount, conversionRate) {
-    if (typeof amount !== "number") {
-      throw new TypeError("Amount must be a number");
-    }
-    if (typeof conversionRate !== "number") {
-      throw new TypeError("Conversion rate must be a number");
-    }
     return amount * conversionRate;
   }
 }
