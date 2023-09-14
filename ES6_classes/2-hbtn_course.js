@@ -32,7 +32,7 @@ export default class HolbertonCourse {
   get students() {
     return this._students;
   }
-  
+
   set students(newStudents) {
     if (Array.isArray(newStudents) && newStudents.every((student) => typeof student === 'string')) {
       this._students = newStudents;
