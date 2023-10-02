@@ -1,4 +1,4 @@
-function getResponseFromAPI() {
+export default function getResponseFromAPI() {
   return new Promise((resolve) => {
     // Simulate an API call, e.g., fetching data from an API
     setTimeout(() => {
@@ -8,5 +8,3 @@ function getResponseFromAPI() {
     }, 2000); // Simulating a 2-second delay (adjust as needed)
   });
 }
-
-export default getResponseFromAPI;
