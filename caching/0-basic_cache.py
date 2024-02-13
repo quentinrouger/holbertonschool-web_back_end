@@ -12,20 +12,14 @@ class BasicCache(BaseCaching):
     """
 
     def put(self, key, item):
-        """ Add an item in the cache
-        """
-        if key and item:
+        """ Add an item to the cache """
+        if key is not None and item is not None:
             self.cache_data[key] = item
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                keys = list(self.cache_data.keys())
-                del self.cache_data[keys[0]]
-            else:
-                return None
 
     def get(self, key):
-        """ Get an item by key
-        """
-        if key and key in self.cache_data:
-            return self.cache_data.get(key)
-        else:
-            return None
+        """ Get an item by key """
+        return self.cache_data.get(key)
+
+
+if __name__ == "__main__":
+    my_cache = BasicCache()
