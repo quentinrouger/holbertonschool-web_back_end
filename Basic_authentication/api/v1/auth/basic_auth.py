@@ -74,4 +74,3 @@ class BasicAuth(Auth):
             return user
 
         return None
-
