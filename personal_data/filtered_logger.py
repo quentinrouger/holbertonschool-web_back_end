@@ -5,6 +5,7 @@ Write a function called filter_datum that returns the log message obfuscated
 import logging
 import re
 from typing import List
+PII_FIELDS = ('email', 'phone', 'ssn', 'password', 'ip')
 
 
 def filter_datum(
@@ -41,3 +42,16 @@ class RedactingFormatter(logging.Formatter):
                         self.fields, self.REDACTION, record.msg, self.SEPARATOR
                     )
         return super().format(record)
+
+
+def get_logger() -> logging.Logger:
+    """
+    Returns a logging object
+    """
+    logger = logging.getLogger('user_data')
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+    handler = logging.StreamHandler()
+    handler.setFormatter(RedactingFormatter(list(PII_FIELDS)))
+    logger.addHandler(handler)
+    return logger
