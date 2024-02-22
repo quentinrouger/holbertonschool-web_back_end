@@ -70,3 +70,23 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         database=os.getenv('PERSONAL_DATA_DB_NAME')
     )
     return connector
+
+
+def main():
+    """Main function to read and filter data."""
+    logger = get_logger()
+
+    db = get_db()
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM users;")
+
+    for row in cursor:
+        logger.info(row)
+
+    cursor.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
