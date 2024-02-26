@@ -39,3 +39,10 @@ class DB:
         self._session.add(new_user)
         self._session.commit()
         return new_user
+
+    def find_user_by(self, **kwargs) -> User:
+        """ Find user by key value pair
+        """
+        if not kwargs:
+            return None
+        return self._session.query(User).filter_by(**kwargs).one()
