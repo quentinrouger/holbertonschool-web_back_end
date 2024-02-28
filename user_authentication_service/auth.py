@@ -75,3 +75,13 @@ class Auth:
             self._db.update_user(user.id, reset_token=reset_token)
             return reset_token
         raise ValueError
+
+    def update_password(self, reset_token: str, password: str) -> None:
+        """Update password
+        """
+        user = self._db.find_user_by(reset_token=reset_token)
+        if user:
+            self._db.update_user(user.id, _hash_password(password),
+                                 reset_token=None)
+            return None
+        raise ValueError
