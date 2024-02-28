@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """App module
 """
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, redirect
 from auth import Auth
 
 
@@ -65,7 +65,7 @@ def logout() -> str:
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         AUTH.destroy_session(user.id)
-        return jsonify({"message": "Bienvenue"}), 200
+        return redirect("http://localhost:5000/", 302)
     else:
         abort(403)
 
