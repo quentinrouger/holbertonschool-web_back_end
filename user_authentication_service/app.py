@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """App module
 """
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 from auth import Auth
 
 
@@ -46,14 +46,12 @@ def login() -> str:
     email = request.form.get('email')
     password = request.form.get('password')
 
-    if not email or not password:
-        return jsonify({"message": "email and password are required"}), 400
-
     if AUTH.valid_login(email, password):
         session_id = AUTH.create_session(email)
         if session_id:
             return jsonify({"email": email, "message": "logged in"}), 200
-    return jsonify({"The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required."}), 401
+    else:
+        abort(401)
 
 
 if __name__ == "__main__":
