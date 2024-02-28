@@ -61,12 +61,12 @@ def logout() -> str:
     Return:
       - Logout message
     """
-    session_id = request.cookies.get('session_id')
-    user = AUTH.get_user_from_session_id(session_id)
-    if user:
+    session_id = request.cookies.get("session_id")
+    try:
+        user = AUTH.get_user_from_session_id(session_id)
         AUTH.destroy_session(user.id)
         return redirect("http://localhost:5000/", 302)
-    else:
+    except Exception:
         abort(403)
 
 
