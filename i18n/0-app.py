@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Route module for the API"""
 from flask import Flask, render_template
 
 
@@ -7,6 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    """Return 0-index.html"""
     return render_template('0-index.html')
 
 
