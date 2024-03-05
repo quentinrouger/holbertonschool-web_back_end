@@ -48,3 +48,12 @@ class TestGithubOrgClient(unittest.TestCase):
                 result = client.public_repos()
                 self.assertEqual(result, ["test"])
                 mock_get_json.assert_called_once_with("http://example.com")
+
+    def test_has_license(self):
+        """Test the has_license method
+        """
+        client = GithubOrgClient("test")
+        self.assertTrue(client.has_license(
+            {"license": {"key": "my_license"}}, "my_license"))
+        self.assertFalse(client.has_license(
+            {"license": {"key": "other_license"}}, "my_license"))
