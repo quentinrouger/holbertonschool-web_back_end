@@ -53,7 +53,8 @@ class TestGithubOrgClient(unittest.TestCase):
         """Test the has_license method
         """
         client = GithubOrgClient("test")
-        self.assertTrue(client.has_license(
-            {"license": {"key": "my_license"}}, "my_license"))
-        self.assertFalse(client.has_license(
-            {"license": {"key": "other_license"}}, "my_license"))
+        repo1 = {"license": {"key": "my_license"}}
+        repo2 = {"license": {"key": "other_license"}}
+
+        self.assertTrue(client.has_license(repo1, "my_license"))
+        self.assertFalse(client.has_license(repo2, "my_license"))
