@@ -2,6 +2,7 @@
 """Route module for the API"""
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
+import pytz
 
 
 app = Flask(__name__)
@@ -55,10 +56,24 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
+@babel.timezoneselector
+def get_timezone() -> str:
+    """Returns a URL-provided or user time zone"""
+    timezone_url = request.args.get("timezone")
+    try:
+        if not timezone_url:
+            timezone = g.user["timezone"]
+        else:
+            timezone = timezone_url
+        return timezone
+    except (pytz.exceptions.UnknownTimeZoneError, Exception):
+        return app.config['BABEL_DEFAULT_TIMEZONE']
+
+
 @app.route('/')
 def index():
     """Return index.html"""
-    return render_template('5-index.html')
+    return render_template('7-index.html')
 
 
 if __name__ == '__main__':
