@@ -20,11 +20,13 @@ class Cache:
         store(data: Union[str, bytes, int, float]) -> str:
             Stores data in Redis with a random key and returns the key.
     """
-    def __init__(self):
+    def __init__(self) -> None:
+        """ Initialization"""
         self._redis = redis.Redis()
         self._redis.flushdb()
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
+        """Store data in redis database"""
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
@@ -32,4 +34,3 @@ class Cache:
 
 cache = Cache()
 key = cache.store("example data")
-print("Stored data with key:", key)
