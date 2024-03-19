@@ -30,7 +30,3 @@ class Cache:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
-
-
-cache = Cache()
-key = cache.store("example data")
