@@ -14,4 +14,7 @@ describe('calculateNumber', function() {
     it('should return the sum of rounded numbers', function() {
         assert.equal(calculateNumber(1.5, 3.7), 6);
     });
+    it('should return the sum of rounded numbers', function() {
+      assert.equal(calculateNumber(-3, 1.2), -2);
+  });
 });
