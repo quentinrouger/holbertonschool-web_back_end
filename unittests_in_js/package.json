@@ -2,7 +2,8 @@
   "devDependencies": {
     "chai": "^5.1.0",
     "mocha": "^10.3.0",
-    "mocha-esm": "^1.1.1"
+    "mocha-esm": "^1.1.1",
+    "sinon": "^17.0.1"
   },
   "scripts": {
     "test": "mocha"
